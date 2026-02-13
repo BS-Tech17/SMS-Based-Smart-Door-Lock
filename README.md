@@ -1,11 +1,10 @@
-<h1 align="center">🔐 IoT-Enabled Embedded Access Control System</h1>
+<h1 align="center">🔐 IoT Embedded Access Control System</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Arduino-%2300979D.svg?style=for-the-badge&logo=arduino&logoColor=white"/>
   <img src="https://img.shields.io/badge/Embedded-Systems-%23FF6F00.svg?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/IoT-Enabled-%2300C853.svg?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/IoT-%2300C853.svg?style=for-the-badge"/>
   <img src="https://img.shields.io/badge/GSM-Alerts-%231E88E5.svg?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/C%2B%2B-Arduino-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"/>
 </p>
 
 <hr/>
