@@ -158,6 +158,14 @@ or
 
 ---
 
+<h2>🏅 Intellectual Property</h2>
+<p>
+This system design and implementation form part of a patented IoT security project.
+The work reflects original innovation in embedded access control and smart monitoring systems.
+</p>
+
+---
+
 <h2>👩‍💻 Author</h2>
 
 **Bhoomika Saxena**
@@ -168,7 +176,7 @@ Embedded AI & IoT Projects | Research | Patents
 
 <h2>📜 License</h2>
 
-This project is for academic and research demonstration purposes.
+This project is shared for academic and demonstration purposes.
 
 <hr/>
 
