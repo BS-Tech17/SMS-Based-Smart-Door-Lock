@@ -1,80 +1,178 @@
-𝗜𝗼𝗧-𝗘𝗻𝗮𝗯𝗹𝗲𝗱 𝗘𝗺𝗯𝗲𝗱𝗱𝗲𝗱 𝗔𝗰𝗰𝗲𝘀𝘀 𝗖𝗼𝗻𝘁𝗿𝗼𝗹 𝗦𝘆𝘀𝘁𝗲𝗺
+<h1 align="center">🔐 IoT-Enabled Embedded Access Control System</h1>
 
-𝗣𝗿𝗼𝗯𝗹𝗲𝗺 𝗠𝗼𝘁𝗶𝘃𝗮𝘁𝗶𝗼𝗻
+<p align="center">
+  <img src="https://img.shields.io/badge/Arduino-%2300979D.svg?style=for-the-badge&logo=arduino&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Embedded-Systems-%23FF6F00.svg?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/IoT-Enabled-%2300C853.svg?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/GSM-Alerts-%231E88E5.svg?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/C%2B%2B-Arduino-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white"/>
+</p>
 
- Conventional door locks provide no intelligence, accountability, or real-time response to unauthorized access. This project explores how embedded systems and IoT technologies can be combined to build a secure, user-specific access control mechanism for residential environments.
- 
+<hr/>
 
-𝗦𝘆𝘀𝘁𝗲𝗺 𝗢𝘃𝗲𝗿𝘃𝗶𝗲𝘄
+<h2>📌 Problem Motivation</h2>
+<p>
+Traditional door locks lack intelligence, traceability, and real-time response to unauthorized access.  
+This project demonstrates how embedded hardware and IoT communication can create a responsive, user-aware
+security system capable of authentication, occupancy monitoring, and automated alerting.
+</p>
 
- This is an Arduino-based embedded access control system designed to authenticate individual residents using unique passwords and actively monitor entry behavior using sensors and GSM-based alerts.
+<h2>🧠 System Overview</h2>
+<p>
+An Arduino-based smart access control system that authenticates residents through keypad passwords,
+monitors entry conditions via sensors, and sends alerts using GSM communication.
+The system combines physical security with behavioral monitoring in a low-cost embedded environment.
+</p>
 
- 
-𝗛𝗮𝗿𝗱𝘄𝗮𝗿𝗲 𝗥𝗲𝗾𝘂𝗶𝗿𝗲𝗺𝗲𝗻𝘁𝘀
+---
 
-- Arduino Uno (ATmega328P)
+<h2>🏗 System Architecture</h2>
 
-- 16x2 LCD display with I2C interface
+```
+User Input (Keypad)
+        │
+        ▼
+Arduino Controller ─────► LCD Feedback
+        │
+        ├──► Servo Motor (Door Lock)
+        ├──► Ultrasonic Sensor (People Count)
+        ├──► Buzzer (Alert)
+        └──► GSM Module ──► SMS / Call Notification
+```
 
-- 4x4 matrix keypad
+📌 Replace this section later with an actual diagram image if available:
 
-- GSM module (SIM800/SIM900 compatible)
+```
+![Architecture Diagram](docs/architecture.png)
+```
 
-- Ultrasonic distance sensor (HC-SR04)
+---
 
-- Servo motor
+<h2>🛠 Hardware Requirements</h2>
 
-- Buzzer
+* Arduino Uno (ATmega328P)
+* 16x2 LCD (I2C)
+* 4x4 Matrix Keypad
+* GSM Module (SIM800/SIM900)
+* Ultrasonic Sensor HC-SR04
+* Servo Motor
+* Buzzer
+* Breadboard & Jumper Wires
+* External GSM Power Supply
 
-- Breadboard
+---
 
-- Jumper wires
+<h2>🔌 Pin Configuration (Example)</h2>
 
-- External power supply for GSM module
+| Component          | Arduino Pins         |
+| ------------------ | -------------------- |
+| LCD I2C            | SDA → A4, SCL → A5   |
+| Keypad             | D2–D9                |
+| Servo              | D10                  |
+| Buzzer             | D11                  |
+| Ultrasonic Trigger | D12                  |
+| Ultrasonic Echo    | D13                  |
+| GSM TX/RX          | Software Serial Pins |
 
-  
-𝗔𝘂𝘁𝗵𝗲𝗻𝘁𝗶𝗰𝗮𝘁𝗶𝗼𝗻 𝗮𝗻𝗱 𝗔𝘂𝘁𝗵𝗼𝗿𝗶𝘇𝗮𝘁𝗶𝗼𝗻 𝗟𝗼𝗴𝗶𝗰
+*(Modify according to your wiring)*
 
- A. Each resident is assigned a unique password (for example: A-1234, B-5678, C-9012).
+---
 
- B. The door lock opens only when a valid credential from the authorized set is entered.
+<h2>⚙️ Installation & Setup</h2>
 
- C. Upon successful authentication, the system identifies the user and displays a personalized message such as “Welcome A” before unlocking the latch.
- 
+### 1️⃣ Arduino IDE Setup
 
-𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆 𝗮𝗻𝗱 𝗜𝗻𝘁𝗿𝘂𝘀𝗶𝗼𝗻 𝗗𝗲𝘁𝗲𝗰𝘁𝗶𝗼𝗻
+* Install Arduino IDE
+* Install required libraries:
 
- A. If an incorrect password is entered three consecutive times, the system triggers a security response.
+  * Keypad
+  * LiquidCrystal_I2C
+  * Servo
+  * SoftwareSerial
 
- B. A call and SMS alert are sent via the GSM module to the homeowner and a designated neighbor, indicating a possible unauthorized access attempt.
- 
+### 2️⃣ Upload Firmware
 
-𝗢𝗰𝗰𝘂𝗽𝗮𝗻𝗰𝘆 𝗠𝗼𝗻𝗶𝘁𝗼𝗿𝗶𝗻𝗴 𝗮𝗻𝗱 𝗔𝗻𝗼𝗺𝗮𝗹𝘆 𝗗𝗲𝘁𝗲𝗰𝘁𝗶𝗼𝗻
+* Connect Arduino
+* Select Board & Port
+* Upload `.ino` file
 
- A. An ultrasonic sensor performs real-time people counting at the entry point.
+### 3️⃣ GSM Configuration
 
- B. Each authorized user is assigned a maximum number of allowed accompanying individuals (User A: 2, User B: 3, User C: 4).
+* Insert active SIM card
+* Update phone numbers in code
+* Verify signal availability
 
- C. If the detected number of people exceeds the predefined limit for the authenticated user, the event is flagged as a security anomaly.
+---
 
- D. Alert calls and messages are immediately sent to the homeowner and the neighbor indicating excessive occupancy.
- 
+<h2>🔑 Functional Modules</h2>
 
-𝗞𝗲𝘆 𝗧𝗮𝗸𝗲𝗮𝘄𝗮𝘆𝘀
+### Authentication
 
- A. Demonstrates multi-layered physical security using low-cost embedded hardware.
+* Unique password per resident
+* Personalized welcome message
+* Servo unlock on success
 
- B. Combines authentication, head count, and automated alerting in constrained environments.
+### Intrusion Detection
 
- C. Highlights practical challenges in embedded security system design.
- 
+* Lockout after 3 failed attempts
+* SMS + call alerts triggered
 
-𝗙𝘂𝘁𝘂𝗿𝗲 𝗦𝗰𝗼𝗽𝗲
+### Occupancy Monitoring
 
- A. A system to verify that the right person is entering the right password
+* Real-time headcount
+* User-specific limits
+* Alerts on anomaly detection
 
- B. OTP-based verification system can be integrated into it.
+---
 
- C. IoT-based access analytics and remote monitoring dashboards.
+<h2>🎥 Demo</h2>
 
- 
+Add demo visuals here:
+
+```
+![Project Demo](docs/demo.gif)
+```
+
+or
+
+```
+![Circuit Image](docs/circuit.jpg)
+```
+
+---
+
+<h2>📊 Key Takeaways</h2>
+
+* Multi-layer embedded security implementation
+* Sensor-based behavioral monitoring
+* GSM-based remote alerting
+* Practical system design under hardware constraints
+
+---
+
+<h2>🚀 Future Scope</h2>
+
+* Biometric / Face recognition verification
+* OTP-based authentication
+* Cloud logging & analytics dashboard
+* Mobile app remote unlock
+
+---
+
+<h2>👩‍💻 Author</h2>
+
+**Bhoomika Saxena**
+B.Tech — Computer Science (IoT & Intelligent Systems)
+Embedded AI & IoT Projects | Research | Patents
+
+---
+
+<h2>📜 License</h2>
+
+This project is for academic and research demonstration purposes.
+
+<hr/>
+
+<p align="center">
+⭐ If you found this project useful — consider starring the repository!
+</p>
