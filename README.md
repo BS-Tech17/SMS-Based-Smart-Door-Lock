@@ -180,6 +180,3 @@ This project is shared for academic and demonstration purposes.
 
 <hr/>
 
-<p align="center">
-⭐ If you found this project useful — consider starring the repository!
-</p>
